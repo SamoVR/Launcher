@@ -1,0 +1,33 @@
+# Supabase's free tier pauses a project after a week with no activity.
+# This asks it one small question every two days so that never happens.
+name: Keep the database awake
+
+on:
+  schedule:
+    - cron: "17 6 */2 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask the database a question
+        run: |
+          curl --fail --silent --show-error \
+            -H "apikey: sb_publishable_Y3Xcdzw6FIcBVgMFa1Prrg_lrY2ZG8-" \
+            "https://ymicynuphdgtcqsvmdxr.supabase.co/rest/v1/games?select=id&limit=1"
+
+      # GitHub turns off scheduled jobs in a repository with no commits for 60 days.
+      - uses: actions/checkout@v4
+      - name: Keep this schedule from being turned off
+        run: |
+          last=$(git log -1 --format=%ct)
+          if [ $(( $(date +%s) - last )) -gt $(( 40 * 86400 )) ]; then
+            git config user.name "SamoVR"
+            git config user.email "SamoVR@users.noreply.github.com"
+            git commit --allow-empty -m "Keep the schedule active"
+            git push
+          fi

@@ -3,77 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://ymicynuphdgtcqsvmdxr.supabase.co; connect-src https://ymicynuphdgtcqsvmdxr.supabase.co; base-uri 'none'; form-action 'none'">
   <title>SamoLauncher</title>
-  <meta name="description" content="A launcher for Samo_VR's games and RIFT Engine, with friends, profiles and community-made content.">
-  <link rel="icon" href="assets/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Games by SamoVR, RIFT Engine and your friends in one Windows launcher.">
+  <link rel="icon" href="img/emblem.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
 </head>
 <body>
-  <header class="top">
-    <a class="brand" href="./"><img src="assets/logo.png" alt=""><b>SamoLauncher</b></a>
-    <nav aria-label="Page">
-      <a href="#inside">What's inside</a>
-      <a href="#safety">Safety</a>
-      <a href="#changes">What's new</a>
-      <a href="https://samovr.github.io/">Samo_VR</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <canvas id="field" aria-hidden="true"></canvas>
-      <div class="hero-text">
-        <h1>SamoLauncher</h1>
-        <p class="lede">One place for my games and RIFT Engine, plus your friends and what the community makes with it.</p>
-        <div class="cta">
-          <a class="btn primary" id="download" href="https://github.com/SamoVR/Launcher/releases/latest">Download for Windows</a>
-          <span class="meta" id="download-meta">Windows 10 and 11. No administrator rights needed.</span>
-        </div>
-        <p class="note">The launcher is invite-only for now, so you'll need a code to sign in.</p>
+  <div id="landing">
+    <header class="hero">
+      <div class="mark" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="wordmark">SamoLauncher</p>
+        <h1>Games, RIFT Engine and friends in one launcher.</h1>
+        <p class="lede">Install and play games by SamoVR, build your own in RIFT, and see who's online. It's in private beta on Windows.</p>
+        <a class="download" href="https://github.com/SamoVR/Launcher/releases/latest/download/SamoLauncher-Setup.exe">Download for Windows</a>
+        <p class="fine">Windows 10 or 11, 64-bit. You'll need an invite code.</p>
       </div>
-      <img class="shot" src="assets/launcher.png" alt="The launcher open on the library, with a list of games on the left and friends on the right" width="1280" height="780">
-    </section>
+    </header>
 
-    <section class="band" id="inside">
-      <h2>What's inside</h2>
-      <dl class="features">
-        <div><dt>Library</dt><dd>Install, update and play with one button. Games still being built carry an Early access tag, so you know what you're getting.</dd></div>
-        <div><dt>RIFT Engine</dt><dd>Download the engine, see what changed and open the editor from the same place.</dd></div>
-        <div><dt>Community</dt><dd>Toolbox models, Lua plugins, materials, packs and templates made by RIFT creators.</dd></div>
-        <div><dt>Friends</dt><dd>See who's online and what they're playing, send messages, start group chats and invite people to a game.</dd></div>
-        <div><dt>Profiles</dt><dd>Levels, badges and a point shop. Your level is worked out on the server, so a high one means something.</dd></div>
-        <div><dt>Live updates</dt><dd>The launcher tells you when a new version is out and installs it when you restart.</dd></div>
+    <main class="tour">
+      <section>
+        <img src="img/library.jpg" width="1360" height="840" alt="The library, with Open Your Eyes as the featured game" loading="lazy">
+        <div><h2>Your library</h2><p>Install, update and play from one place. The server counts your playtime and levels, so a level means someone really played.</p></div>
+      </section>
+      <section class="flip">
+        <img src="img/toolbox.jpg" width="1360" height="840" alt="The RIFT Toolbox with models made by other creators" loading="lazy">
+        <div><h2>RIFT Engine</h2><p>Get the engine here, then add models and plugins made by other creators. A person checks every upload before anyone can download it.</p></div>
+      </section>
+      <section>
+        <img src="img/profile.jpg" width="1360" height="840" alt="A player profile with a background, badges and a favorite game" loading="lazy">
+        <div><h2>A profile that's yours</h2><p>Show your favorite game, your badges and what you're listening to. Earn points by playing and spend them on frames, themes and sounds.</p></div>
+      </section>
+      <section class="flip">
+        <img src="img/messages.jpg" width="1360" height="840" alt="A group chat with a game invite" loading="lazy">
+        <div><h2>Friends in the same place</h2><p>Message friends, start a group, and invite people straight into a game.</p></div>
+      </section>
+    </main>
+
+    <section class="before">
+      <h2>Before you install</h2>
+      <dl>
+        <dt>Invite code</dt>
+        <dd>The beta is invite-only. Ask SamoVR for a code, then enter it after you create your account.</dd>
+        <dt>Windows may warn you</dt>
+        <dd>The installer isn't code-signed yet, so Windows can show a blue warning. Choose More info, then Run anyway.</dd>
       </dl>
     </section>
 
-    <section class="band" id="safety">
-      <h2>Safety</h2>
-      <div class="split">
-        <ul>
-          <li>Every download is compared with its published checksum. If it doesn't match, it's thrown away.</li>
-          <li>Community uploads are limited to a short list of file types. No programs, ever.</li>
-          <li>A moderator checks every upload and every new version before anyone can download it.</li>
-          <li>Private messages stay private. Staff only see one if someone in that conversation reports it.</li>
-        </ul>
-        <p class="aside">The installer isn't code-signed yet, so Windows SmartScreen may warn you the first time you run it. Choose More info, then Run anyway. The version number and checksum are on the <a href="https://github.com/SamoVR/Launcher/releases/latest">release page</a>.</p>
-      </div>
-    </section>
+    <footer><span>Made by SamoVR</span><a href="https://github.com/SamoVR/Launcher/releases">All releases</a></footer>
+  </div>
 
-    <section class="band" id="changes">
-      <h2>What's new</h2>
-      <div id="release-notes"><p class="muted">Release notes appear here once the first version is published.</p></div>
-    </section>
+  <main id="profile" class="profile" hidden>
+    <a class="wordmark home" href="./">SamoLauncher</a>
+    <article id="card" hidden>
+      <div class="avatar" id="avatar"></div>
+      <h1 id="name"></h1>
+      <p class="handle" id="handle"></p>
+      <p class="status" id="status"></p>
+      <p class="stats" id="stats"></p>
+      <p class="bio" id="bio"></p>
+      <ul class="badges" id="badges"></ul>
+    </article>
+    <p class="missing" id="missing" hidden>This player's page is private or doesn't exist.</p>
   </main>
-
-  <footer class="foot">
-    <span>Made by <a href="https://samovr.github.io/">Samo_VR</a></span>
-    <a href="https://samovr.github.io/RiftEngine/">RIFT Engine</a>
-  </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>
