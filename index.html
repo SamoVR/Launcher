@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://ymicynuphdgtcqsvmdxr.supabase.co; connect-src https://ymicynuphdgtcqsvmdxr.supabase.co; base-uri 'none'; form-action 'none'">
-  <title>SamoLauncher</title>
+  <title>Samo Launcher</title>
   <meta name="description" content="Games by SamoVR, RIFT Engine and your friends in one Windows launcher.">
   <link rel="icon" href="img/emblem.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
@@ -15,7 +15,7 @@
     <header class="hero">
       <div class="mark" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="wordmark">SamoLauncher</p>
+        <p class="wordmark">Samo Launcher</p>
         <h1>Games, RIFT Engine and friends in one launcher.</h1>
         <p class="lede">Install and play games by SamoVR, build your own in RIFT, and see who's online. It's in private beta on Windows.</p>
         <a class="download" href="https://github.com/SamoVR/Launcher/releases/latest/download/SamoLauncher-Setup.exe">Download for Windows</a>
@@ -56,15 +56,27 @@
   </div>
 
   <main id="profile" class="profile" hidden>
-    <a class="wordmark home" href="./">SamoLauncher</a>
-    <article id="card" hidden>
-      <div class="avatar" id="avatar"></div>
-      <h1 id="name"></h1>
-      <p class="handle" id="handle"></p>
-      <p class="status" id="status"></p>
-      <p class="stats" id="stats"></p>
-      <p class="bio" id="bio"></p>
-      <ul class="badges" id="badges"></ul>
+    <div class="profile-cover" id="cover"></div>
+    <nav class="profile-nav"><a class="wordmark" href="./">Samo Launcher</a><a class="get" href="./">Get the launcher</a></nav>
+    <article id="card" class="profile-sheet" hidden>
+      <header class="profile-head">
+        <div class="avatar" id="avatar"></div>
+        <div class="profile-id">
+          <h1 id="name"></h1>
+          <p class="handle" id="handle"></p>
+          <p class="status" id="status"></p>
+          <p class="bio" id="bio"></p>
+        </div>
+        <div class="profile-level"><div class="level-ring" id="ring"><b id="level"></b></div><span id="tier"></span></div>
+      </header>
+      <dl class="profile-stats" id="stats"></dl>
+      <div class="profile-grid">
+        <div>
+          <section id="favorite-block" hidden><h2>Favorite game</h2><div class="favorite"><img id="favorite-art" alt=""><div><b id="favorite-name"></b><p id="favorite-sub"></p></div></div></section>
+          <section id="games-block" hidden><h2>Games</h2><ul class="game-list" id="games"></ul></section>
+        </div>
+        <section id="badges-block" hidden><h2>Badges</h2><ul class="badges" id="badges"></ul></section>
+      </div>
     </article>
     <p class="missing" id="missing" hidden>This player's page is private or doesn't exist.</p>
   </main>
