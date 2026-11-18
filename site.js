@@ -52,11 +52,23 @@ async function showProfile(username) {
     avatar.append(svg);
   }
 
+  // A player's own colours replace the ones their level gives them, across the whole page.
   const tier = TIERS[Math.min(TIERS.length - 1, Math.floor(player.level / 10))];
-  const ring = document.getElementById("ring");
-  ring.style.setProperty("--tier", tier[1]);
-  ring.style.setProperty("--tier2", tier[2]);
-  document.getElementById("cover").dataset.bg = (player.background ?? "").split(":")[1] ?? "";
+  const page = document.getElementById("profile");
+  page.style.setProperty("--tier", player.colors?.a ?? tier[1]);
+  page.style.setProperty("--tier2", player.colors?.b ?? tier[2]);
+  if (player.colors) page.classList.add("coloured");
+
+  // An equipped shop background wins over an uploaded banner, the same as in the launcher.
+  const preset = (player.background ?? "").split(":")[1] ?? "";
+  const cover = document.getElementById("cover");
+  cover.dataset.bg = preset;
+  if (!preset && player.background_path) {
+    const art = document.getElementById("cover-art");
+    art.src = media("profile-media", player.background_path);
+    art.hidden = false;
+    cover.classList.add("has-art");
+  }
 
   text("name", player.display_name);
   text("handle", `@${player.username}`);
@@ -81,6 +93,31 @@ async function showProfile(username) {
     text("favorite-sub", player.favorite.subtitle);
     const art = document.getElementById("favorite-art");
     if (player.favorite.hero_path) art.src = media("game-art", player.favorite.hero_path); else art.hidden = true;
+    if (player.favorite.logo_path) {
+      const logo = document.getElementById("favorite-logo");
+      logo.src = media("game-art", player.favorite.logo_path);
+      logo.alt = player.favorite.name;
+      logo.hidden = false;
+    }
+    if (player.favorite.accent) {
+      const block = document.getElementById("favorite");
+      block.style.setProperty("--game", player.favorite.accent);
+      block.classList.add("themed");
+    }
+  }
+  if (player.artwork?.length) {
+    document.getElementById("artwork-block").hidden = false;
+    const wall = document.getElementById("artwork");
+    wall.dataset.count = player.artwork.length;
+    for (const path of player.artwork) {
+      const link = document.createElement("a");
+      link.href = media("profile-media", path);
+      link.target = "_blank";
+      link.rel = "noopener";
+      const image = new Image(); image.alt = ""; image.loading = "lazy"; image.src = link.href;
+      link.append(image);
+      wall.append(link);
+    }
   }
   if (player.games.length) {
     document.getElementById("games-block").hidden = false;

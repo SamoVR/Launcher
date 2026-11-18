@@ -56,7 +56,7 @@
   </div>
 
   <main id="profile" class="profile" hidden>
-    <div class="profile-cover" id="cover"></div>
+    <div class="profile-cover" id="cover"><img id="cover-art" alt="" hidden></div>
     <nav class="profile-nav"><a class="wordmark" href="./">Samo Launcher</a><a class="get" href="./">Get the launcher</a></nav>
     <article id="card" class="profile-sheet" hidden>
       <header class="profile-head">
@@ -72,7 +72,8 @@
       <dl class="profile-stats" id="stats"></dl>
       <div class="profile-grid">
         <div>
-          <section id="favorite-block" hidden><h2>Favorite game</h2><div class="favorite"><img id="favorite-art" alt=""><div><b id="favorite-name"></b><p id="favorite-sub"></p></div></div></section>
+          <section id="favorite-block" hidden><h2>Favorite game</h2><div class="favorite" id="favorite"><div class="favorite-art"><img id="favorite-art" alt=""><img id="favorite-logo" class="favorite-logo" alt="" hidden></div><div><b id="favorite-name"></b><p id="favorite-sub"></p></div></div></section>
+          <section id="artwork-block" hidden><h2>Artwork</h2><div class="artwork" id="artwork"></div></section>
           <section id="games-block" hidden><h2>Games</h2><ul class="game-list" id="games"></ul></section>
         </div>
         <section id="badges-block" hidden><h2>Badges</h2><ul class="badges" id="badges"></ul></section>
